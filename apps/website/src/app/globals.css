@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --sgi-bg: #dcd7c9;
+  --sgi-text: #2c3639;
+  --sgi-muted: #3f4e4f;
+  --sgi-accent: #a27b5c;
+  --background: var(--sgi-bg);
+  --foreground: var(--sgi-text);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-english);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-english), serif;
+}
+
+[lang="bn"] body,
+.font-bn {
+  font-family: var(--font-bangla), sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.sgi-container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 76rem;
+  padding: 0 1rem;
+}
+
+.sgi-card {
+  border: 1px solid color-mix(in srgb, var(--sgi-muted) 25%, white);
+  border-radius: 0.75rem;
+  background: color-mix(in srgb, white 78%, var(--sgi-bg));
+  padding: 1rem;
+}
