@@ -14,6 +14,7 @@ type Branch = {
   address: LocalizedText;
   phone: string;
   mapLink: string;
+  mapEmbedUrl: string;
 };
 
 type Notice = {
@@ -54,8 +55,8 @@ export const siteCopy = {
     bn: "শরীয়াহ গ্রাজুয়েশন ইনস্টিটিউট",
   },
   tagline: {
-    en: "Bilingual Islamic education with clarity, trust, and guidance.",
-    bn: "স্বচ্ছতা, আস্থা ও দিকনির্দেশনা-ভিত্তিক দ্বিভাষিক ইসলামী শিক্ষা।",
+    en: "",
+    bn: "",
   },
   nav: {
     home: { en: "Home", bn: "হোম" },
@@ -85,7 +86,7 @@ export const siteCopy = {
 export const branches: Branch[] = [
   {
     id: "ctg",
-    name: { en: "Chattogram (Head Office)", bn: "চট্টগ্রাম (হেড অফিস)" },
+    name: { en: "Chattogram Campus", bn: "চট্টগ্রাম ক্যাম্পাস" },
     address: {
       en: "Lalkhan Bazar Madrasa Masjid, Khulshi, Chattogram.",
       bn: "লালখান বাজার মাদ্রাসা মসজিদ, খুলশী, চট্টগ্রাম।",
@@ -93,16 +94,20 @@ export const branches: Branch[] = [
     phone: "+8801XXXXXXXXX",
     mapLink:
       "https://maps.google.com/?q=Lalkhan+Bazar+Madrasa+Masjid,+Khulshi,+Chattogram",
+    mapEmbedUrl:
+      "https://maps.google.com/maps?q=Lalkhan%20Bazar%20Madrasa%20Masjid%2C%20Khulshi%2C%20Chattogram&z=15&output=embed",
   },
   {
     id: "dhk",
-    name: { en: "Dhaka Branch", bn: "ঢাকা শাখা" },
+    name: { en: "Dhaka Campus", bn: "ঢাকা ক্যাম্পাস" },
     address: {
       en: "86, Nazimuddin Road, Chankharpul, Dhaka.",
       bn: "৮৬, নাজিমুদ্দিন রোড, চানখারপুল, ঢাকা।",
     },
     phone: "+8801XXXXXXXXX",
     mapLink: "https://maps.google.com/?q=86+Nazimuddin+Road,+Chankharpul,+Dhaka",
+    mapEmbedUrl:
+      "https://maps.google.com/maps?q=86%20Nazimuddin%20Road%2C%20Chankharpul%2C%20Dhaka&z=15&output=embed",
   },
 ];
 

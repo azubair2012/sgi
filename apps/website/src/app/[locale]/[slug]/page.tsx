@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -335,6 +336,64 @@ export default async function LocalizedPage({
             : "শাখাভিত্তিক যোগাযোগ তথ্য এবং ম্যাপ লিংক।"
         }
       >
+        <section className="sgi-surface mb-6 p-6 md:p-8">
+          <span className="sgi-kicker">
+            {locale === "en" ? "Campus Locations" : "ক্যাম্পাস লোকেশন"}
+          </span>
+          <h2 className="mt-4 text-2xl font-bold md:text-3xl">
+            {locale === "en" ? "Global Presence, Local Access" : "বিস্তৃত উপস্থিতি, স্থানীয় সহজ যোগাযোগ"}
+          </h2>
+          <p className="sgi-muted mt-3 max-w-3xl">
+            {locale === "en"
+              ? "Find the nearest campus, open directions instantly, and contact your preferred branch directly through WhatsApp."
+              : "নিকটস্থ ক্যাম্পাস খুঁজুন, দ্রুত ম্যাপে দেখুন এবং আপনার পছন্দের শাখার সাথে সরাসরি হোয়াটসঅ্যাপে যোগাযোগ করুন।"}
+          </p>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            {branches.map((branch) => (
+              <article className="rounded-xl border border-[#3F4E4F]/20 bg-white/45 p-4" key={`${branch.id}-map-cta`}>
+                <h3 className="text-base font-semibold">{localize(locale, branch.name)}</h3>
+                <p className="sgi-muted mt-1 text-sm">{localize(locale, branch.address)}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <Link className="sgi-btn-secondary text-sm" href={branch.mapLink}>
+                    {locale === "en" ? "Open in Google Maps" : "গুগল ম্যাপে দেখুন"}
+                  </Link>
+                  <Link className="sgi-btn-primary text-sm" href={socialLinks.whatsapp}>
+                    WhatsApp
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-6 grid gap-4 md:grid-cols-2">
+          {branches.map((branch) => (
+            <article className="sgi-card p-0 overflow-hidden" key={`${branch.id}-embed`}>
+              <div className="p-4">
+                <h3 className="text-base font-semibold">{localize(locale, branch.name)}</h3>
+                <p className="sgi-muted mt-1 text-sm">{localize(locale, branch.address)}</p>
+              </div>
+              <div className="relative">
+                <iframe
+                  title={`${localize(locale, branch.name)} map`}
+                  src={branch.mapEmbedUrl}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="h-64 w-full border-0"
+                />
+                <div className="absolute left-3 top-3 rounded-full border border-[#3F4E4F]/30 bg-[#DCD7C9]/95 p-1.5 shadow-sm">
+                  <Image
+                    src="/icons/sgi-map-pin.svg"
+                    alt="Campus marker badge"
+                    width={24}
+                    height={24}
+                  />
+                </div>
+              </div>
+            </article>
+          ))}
+        </section>
+
         <div className="grid gap-4 md:grid-cols-2">
           {branches.map((branch) => (
             <article className="sgi-card" key={branch.id}>
